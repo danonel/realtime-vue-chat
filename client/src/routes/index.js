@@ -9,12 +9,19 @@ const routes = [
     path: "/",
     name: "Login",
     component: () => import("../components/Login.vue"),
+    children: [
+      {
+        path: "/chat",
+        name: "Chat",
+        component: () => import("../components/Chat.vue")
+      },
+    ]
   },
   {
-    path: "/chat",
-    name: "Chat",
-    component: () => import("../components/Chat.vue")
+    path: '/*',
+    redirect: '/'
   }
+
 ];
 
 const router = new VueRouter({
@@ -22,13 +29,13 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if(to.name === 'Login'){
+  if (to.name === 'Login') {
     store.state.user = ''
-    
+
   }
-  if(to.name === 'Chat' && !store.state.user){
+  if (to.name === 'Chat' && !store.state.user) {
     next('/')
-  } 
+  }
 
   next()
 })
