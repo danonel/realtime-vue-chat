@@ -5,12 +5,12 @@
 in / run: npm install
 ```
 ```
-run npm start
+then run npm start
 ```
-
+### Client setup
 ```
 in /client run: npm install
 ```
 ```
-run npm run serve
+then run npm run serve
 ```
